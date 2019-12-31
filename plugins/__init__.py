@@ -16,13 +16,9 @@
     Contact: code@inmanta.com
 """
 
-from inmanta.resources import Resource, resource
-from inmanta.agent import handler
-from inmanta import const
-
-import shlex
-
 import requests
+from inmanta.agent import handler
+from inmanta.resources import Resource, resource
 from jq import jq
 
 
@@ -31,6 +27,7 @@ class RESTCall(Resource):
     """
         A Call to a rest endpoint
     """
+
     fields = (
         "url_id",
         "url",
@@ -47,12 +44,15 @@ class RESTCall(Resource):
         "agent",
     )
 
+
 @handler.provider("rest::RESTCall", name="requests")
 class RESTHandler(handler.ResourceHandler):
     def list_changes(self, ctx: handler.HandlerContext, resource: RESTCall):
         return {}
 
-    def do_changes(self, ctx: handler.HandlerContext, resource: RESTCall, changes: dict):
+    def do_changes(
+        self, ctx: handler.HandlerContext, resource: RESTCall, changes: dict
+    ):
         return self._call(ctx, resource)
 
     def _fail(self, resource, message):
@@ -84,7 +84,11 @@ class RESTHandler(handler.ResourceHandler):
 
         if resource.validate_return is not None:
             result = jq(resource.validate_return).transform(json_data)
-            ctx.debug("%(query)s validated to %(result)s", query=resource.validate_return, result=result)
+            ctx.debug(
+                "%(query)s validated to %(result)s",
+                query=resource.validate_return,
+                result=result,
+            )
 
             if not result:
                 self._fail(resource, "Returned result not valid.")

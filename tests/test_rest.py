@@ -15,17 +15,18 @@
 
     Contact: code@inmanta.com
 """
-import inmanta
-import os
 
 
 def test_rest_base(project):
     """ test using the postman echo service """
     testurl = "https://postman-echo.com/get"
-    project.compile("""
+    project.compile(
+        """
 import rest
 rest::RESTCall(url="%(testurl)s", body={"a":"test", "b":{"c":3}}, headers={"h":"x"})
-        """ % {"testurl": testurl})
+        """
+        % {"testurl": testurl}
+    )
 
     e = project.deploy_resource("rest::RESTCall")
     project.deploy(e)
