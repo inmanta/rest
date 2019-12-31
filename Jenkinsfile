@@ -24,15 +24,6 @@ pipeline {
         }
       }
     }
-    stage("code linting"){
-      steps{
-        script{
-          sh'''
-          ${WORKSPACE}/env/bin/flake8 plugins tests
-          '''
-        }
-      }
-    }
     stage("tests"){
       steps{
         script{
@@ -44,6 +35,15 @@ pipeline {
       }
     }
   }
+      stage("code linting"){
+      steps{
+        script{
+          sh'''
+          ${WORKSPACE}/env/bin/flake8 plugins tests
+          '''
+        }
+      }
+    }
   post{
     always{
       script{
