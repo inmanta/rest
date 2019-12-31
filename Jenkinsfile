@@ -34,8 +34,7 @@ pipeline {
         }
       }
     }
-  }
-      stage("code linting"){
+    stage("code linting"){
       steps{
         script{
           sh'''
@@ -44,6 +43,7 @@ pipeline {
         }
       }
     }
+  }
   post{
     always{
       script{
