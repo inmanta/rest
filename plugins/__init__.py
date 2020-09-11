@@ -25,7 +25,7 @@ from jq import jq
 @resource("rest::RESTCall", agent="agent", id_attribute="url_id")
 class RESTCall(Resource):
     """
-        A Call to a rest endpoint
+    A Call to a rest endpoint
     """
 
     fields = (
