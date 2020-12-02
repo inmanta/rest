@@ -1,4 +1,4 @@
-#0.2.2
+#0.2.3
 - Downgrade requests dependency for compatibility with other modules
 
 #0.2.1
