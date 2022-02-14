@@ -18,7 +18,7 @@
 
 
 def test_rest_base(project):
-    """ test using the postman echo service """
+    """test using the postman echo service"""
     testurl = "https://postman-echo.com/get"
     project.compile(
         """
