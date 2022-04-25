@@ -1,3 +1,6 @@
+# 0.2.9
+- Add pyproject.toml file and set asyncio_mode to auto 
+
 # 0.2.7
 - Use conditional requirement for inmanta-dev-dependencies package
 
